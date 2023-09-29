@@ -1,0 +1,476 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: rgb(129, 198, 251);
+    --blue: rgb(27, 153, 255);
+    --grey: rgba(165, 165, 165, 0.489);
+  }
+  .app {
+    height: 90%;
+    width: 90%;
+    background: url(Picsart_23-09-28_19-16-00-169.png);
+    background-color: rgb(94, 158, 229);
+    background-size: 250px 430px;
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.329);
+  }
+  .fakenav {
+    display: none;
+  }
+  .search {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 50;
+    top: 20px;
+    right: 70px;
+    height: 30px;
+    min-width: 300px;
+    border: 1px solid white;
+    background-color: white;
+    padding: 0 10px;
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.329);
+  }
+  .search input {
+    border: none;
+    outline: none;
+  }
+  .searchbutton {
+    height: 100%;
+    width: 150px;
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    position: absolute;
+    right: 0;
+    border-radius: 50px;
+    cursor: pointer;
+    user-select: none;
+    padding: 3px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .searchbutton svg {
+    height: 100%;
+    aspect-ratio: 1;
+  }
+  .locationbutton {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    z-index: 50;
+    top: 20px;
+    right: 20px;
+    height: 30px;
+    aspect-ratio: 1;
+    background-color: var(--blue);
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 50%;
+    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.329);
+    cursor: pointer;
+  }
+  .leftside {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 25%;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-family: Calibri;
+  }
+  .toggledeg {
+    position: absolute;
+    top: 25px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .toggletrack {
+    height: 10px;
+    width: 30px;
+    border-radius: 20px;
+    background-color: rgb(161, 161, 161);
+    position: relative;
+  }
+  .togglethumb {
+    position: absolute;
+    height: 200%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    top: 50%;
+    left: 0%;
+    transform: translate(0%, -50%);
+    background-color: white;
+    transition: 0.5s;
+  }
+  .today {
+    position: absolute;
+    left: 20px;
+    top: 50px;
+  }
+  .temp {
+    margin-top: 100px;
+    font-size: 400%;
+  }
+  .rightside {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 75%;
+    border-radius: 30px;
+    background-color: rgba(178, 202, 227, 0.461);
+    overflow: hidden;
+    z-index: 10;
+  }
+  .locationname {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    height: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 25px;
+    color: white;
+  }
+  .tilescontainer {
+    height: 50%;
+    width: 100%;
+    margin-top: 60px;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: auto;
+    box-sizing: border-box;
+  }
+  .tiles {
+    height: 100px;
+    aspect-ratio: 7/3;
+    background-color: white;
+    border-radius: 25px;
+    position: relative;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.329);
+  }
+  .tilename {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    height: 30px;
+  }
+  .tileicon {
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    height: 30px;
+    aspect-ratio: 1;
+    background-color: var(--blue);
+    box-sizing: border-box;
+    padding: 4px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.329);
+  }
+  .clearsmile {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .tilevalue {
+    font-weight: 900;
+    font-size: large;
+  }
+  .tilemeternames {
+    position: absolute;
+    bottom: 23px;
+    left: 50%;
+    width: 70%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(165, 165, 165);
+  }
+  .tilemeter {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 10px;
+    width: 80%;
+    background-color: var(--grey);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.329);
+  }
+  .tilemetervalue {
+    height: 100%;
+    width: 0%;
+    transition: 1s;
+    background-color: var(--blue);
+  }
+  /*  */
+  .forcastcontainer {
+    height: calc(50% - 60px);
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+  }
+  .forcasttile {
+    border-radius: 0px 0px 25px 25px;
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: flex;
+    padding: 20px 20px 20px 20px;
+    box-sizing: border-box;
+    gap: 10px;
+  }
+  .forcasttile::-webkit-scrollbar {
+    height: 0px;
+  }
+  .scroll {
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    height: 8px;
+    width: 80%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+  }
+  .thumb {
+    position: absolute;
+    height: 100%;
+    width: 100px;
+    border-radius: 10px;
+    background-color: var(--blue);
+  }
+  /* here we are */
+  .forcastblock {
+    height: 100%;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    box-shadow: 5px 5px 4px 0px rgba(0, 0, 0, 0.329);
+  }
+  .forcasttemp {
+    color: var(--blue);
+  }
+  .forcasticon {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(5px 5px 5px #666666ae);
+  }
+  .forcasttime {
+    color: var(--blue);
+    padding: 0px 10px;
+    border-radius: 50px;
+    display: grid;
+    place-content: center;
+  }
+  /*  */
+  .fadein {
+    opacity: 0;
+  }
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  .showerror {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    place-content: center;
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    display: none;
+  }
+  .errorbox {
+    height: 200px;
+    aspect-ratio: 4/3;
+    background-color: rgba(255, 255, 255, 0.443);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-size: 20px;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+      sans-serif;
+  }
+  .hideerror {
+    padding: 5px 30px;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+  .hideerror:hover {
+    background-color: var(--blue);
+    color: white;
+  }
+  /* 1200 */
+  @media screen and (width<1200px) {
+    body {
+      margin: 0;
+    }
+    .app {
+      height: 100%;
+      width: 100%;
+      border-radius: 0;
+    }
+    .rightside {
+      border-radius: 30px 0px 0px 30px;
+    }
+  }
+  /* 1000 */
+  @media screen and (width<1000px) {
+    .app {
+      overflow-y: scroll;
+    }
+    .fakenav {
+      display: none;
+      position: fixed;
+      height: 100px;
+      width: 100%;
+      background-color: var(--blue);
+      z-index: 30;
+      top: 0;
+      left: 0;
+    }
+    .leftside {
+      position: relative;
+      height: 400px;
+      width: 100%;
+    }
+    .temp {
+      margin-top: 200px;
+      font-size: 400%;
+    }
+    .rightside {
+      position: relative;
+      height: calc(100% - 100px);
+      min-height: 500px;
+      width: 100%;
+      border-radius: 0;
+      background-color: rgba(178, 202, 227, 0.461);
+    }
+    .forcastcontainer {
+      min-height: 160px;
+    }
+    .search {
+      position: fixed;
+      top: 30px;
+      right: 70px;
+    }
+    .locationbutton {
+      position: fixed;
+      top: 30px;
+      right: 20px;
+    }
+    .toggledeg {
+      position: fixed;
+      top: 25px;
+      left: 20px;
+      z-index: 50;
+    }
+    .today {
+      position: fixed;
+      left: 20px;
+      top: 50px;
+      z-index: 50;
+    }
+    ::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+  /* 770 */
+  @media screen and (width<770px) {
+    .tilescontainer {
+      height: 50%;
+      min-height: 400px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .rightside {
+      height: calc(100% - 100px);
+      min-height: 800px;
+    }
+  }
+  /* 550 */
+  @media screen and (width<550px) {
+    .search {
+      min-width: 100px;
+      max-width: 148px;
+    }
+    .searchbutton {
+      width: 50px;
+    }
+    .searchbutton span {
+      display: none;
+    }
+  }
+  /* 500 */
+  @media screen and (width<500px) {
+    .tiles {
+      height: 100px;
+      aspect-ratio: 5/3;
+    }
+  }
+  /*  */
+  .meteroid {
+    height: 71px;
+    width: 100px;
+    background-image: url(meteroid1.png);
+    background-size: contain;
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    animation: meteroid 2s forwards;
+  }
+  @keyframes meteroid {
+    50%{
+      opacity: 1;
+    }
+    100% {
+      top: 300px;
+      left: 500px;
+      opacity: 0;
+    }
+  }
