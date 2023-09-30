@@ -448,6 +448,9 @@ body {
   }
   /* 500 */
   @media screen and (width<500px) {
+    .app {
+      background-size: auto 80%;
+    }
     .tiles {
       height: 100px;
       aspect-ratio: 5/3;
