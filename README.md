@@ -12,6 +12,7 @@
 9. [Styling](#styling)
 10. [Responsive Design](#responsive-design)
 11. [Future Improvements](#future-improvements)
+<img width="960" alt="Screenshot 2023-09-30 090942" src="https://github.com/polidahiya/weatherapp3.0/assets/121171390/a450fcf8-edec-43be-9ca9-07da0933ba0e">
 
 ## 1. Introduction <a name="introduction"></a>
 The Weather App is a web-based application that allows users to check the current weather conditions for a specific location. This documentation provides an overview of the app's features, technologies used, installation instructions, and usage guidelines.
@@ -19,20 +20,20 @@ The Weather App is a web-based application that allows users to check the curren
 ## 2. Features <a name="features"></a>
 ### 2.1 Homepage
 - Provides a simple user interface with a search input field and a "Get Weather" button.
-- Users can enter a location (e.g., city or ZIP code) in the search input.
+- Users can enter a location (e.g., city ) in the search input.
 
 ### 2.2 Weather Display
 - Displays the current weather conditions for the specified location.
 - Includes details such as temperature, humidity, wind speed, and weather description.
-- Weather data is fetched from a weather API (e.g., OpenWeatherMap).
+- Weather data is fetched from a weather API OpenWeatherMap.
 
 ### 2.3 Error Handling
 - Implements error handling for cases where the location entered by the user is not found or when there is an issue with the API request.
 - Displays user-friendly error messages and provides guidance on how to proceed.
 
 ### 2.4 Unit Selection
-- Allows users to switch between temperature units (e.g., Celsius and Fahrenheit).
-- Implements a toggle or dropdown to switch between units, and updates weather data accordingly.
+- Allows users to switch between temperature units , Celsius and Fahrenheit.
+- Implementwd a toggle to switch between units, and updates weather data accordingly.
 
 ### 2.5 Geolocation (Optional)
 - Offers the option to use the user's geolocation to automatically fetch the weather for their current location.
@@ -88,8 +89,6 @@ To run the Weather App locally, follow these steps:
 
 ## 11. Future Improvements <a name="future-improvements"></a>
 Some potential future improvements for the Weather App include:
-- Adding a 5-day weather forecast.
 - Allowing users to save favorite locations.
 - Providing weather alerts and notifications.
-- Enhancing the user interface with animations and interactive elements.
 - Adding more weather-related information, such as UV index and air quality.
