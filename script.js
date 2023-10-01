@@ -47,10 +47,19 @@ function fetchdata(lat, lon) {
     res
       .json()
       .then((res) => {
+        console.log(res);
         s1(".temp").innerHTML = celcius
           ? (res.main.temp - 273.15).toFixed(0) + "°C"
           : (((res.main.temp - 273.15) * 9) / 5 + 32).toFixed(0) + "°F";
-        s1(".weather").innerHTML = res.weather[0].description;
+        s1(".wdir").style.transform="rotateZ("+res.wind.deg +"deg)"
+        s1(".weather").innerHTML =
+          res.weather[0].description + "  " + (celcius
+            ? (res.main.temp_max - 273.15).toFixed(0) + "° / "
+            : (((res.main.temp_max - 273.15) * 9) / 5 + 32).toFixed(0) +
+              "° / ") +
+              (celcius
+            ? (res.main.temp_min - 273.15).toFixed(0) + "°"
+            : (((res.main.temp_min - 273.15) * 9) / 5 + 32).toFixed(0) + "°");
         if (bylocation) {
           s1(".locationname").innerHTML = "Your location";
         }
@@ -60,12 +69,10 @@ function fetchdata(lat, lon) {
         //
         s1(".tilevalue2").innerHTML = celcius
           ? (res.main.feels_like - 273.15).toFixed(0) + "°C"
-          : (((res.main.feels_like - 273.15) * 9) / 5 + 32).toFixed(0) +
-            "°F";
+          : (((res.main.feels_like - 273.15) * 9) / 5 + 32).toFixed(0) + "°F";
         s1(".tilemetervalue2").style.width = celcius
           ? ((res.main.feels_like - 273.15).toFixed(0) / 50) * 100 + "%"
-          : (((((res.main.feels_like - 273.15) * 9) / 5 + 32).toFixed(0) -
-              40) /
+          : (((((res.main.feels_like - 273.15) * 9) / 5 + 32).toFixed(0) - 40) /
               60) *
               100 +
             "%";
@@ -82,8 +89,7 @@ function fetchdata(lat, lon) {
           : "0%";
         //
         s1(".tilevalue5").innerHTML = res.wind.speed + " Km/h";
-        s1(".tilemetervalue5").style.width =
-          (res.wind.speed / 60) * 100 + "%";
+        s1(".tilemetervalue5").style.width = (res.wind.speed / 60) * 100 + "%";
         //
         s1(".tilevalue6").innerHTML = res.clouds.all + "%";
         s1(".tilemetervalue6").style.width = res.clouds.all + "%";
@@ -128,8 +134,7 @@ function forcast(lat, lon) {
           <div class="forcasttemp">${
             celcius
               ? (item.main.temp - 273.15).toFixed(1) + "°C"
-              : (((item.main.temp - 273.15) * 9) / 5 + 32).toFixed(1) +
-                "°F"
+              : (((item.main.temp - 273.15) * 9) / 5 + 32).toFixed(1) + "°F"
           }</div>
           <div class="forcasticon">
             <svg class="clearsmile" style="display:${
@@ -204,25 +209,21 @@ function toggledeg() {
   }
 }
 // fake scroll
-document.body.scrollTop;
 s1(".app").onscroll = (e) => {
   if (s1(".app").scrollTop == 0) {
     s1(".fakenav").style.display = "none";
   } else {
     s1(".fakenav").style.display = "block";
   }
+  s1(".weather").style.opacity = 1 - s1(".app").scrollTop / 130;
+  s1(".temp").style.opacity = 1 - s1(".app").scrollTop / 130;
 };
 // forcast scroll
 s1(".forcasttile").onscroll = () => {
   s1(".thumb").style.left =
-    (s1(".forcasttile").scrollLeft /
-      (s1(".forcasttile").scrollWidth +
-        s1(".forcasttile").getBoundingClientRect().width +
-        100)) *
-      100 +
+    (s1(".forcasttile").scrollLeft / s1(".forcasttile").scrollWidth) * 100 +
     "%";
 };
-
 //today date
 let montharr = [
   "Jan",
@@ -233,16 +234,13 @@ let montharr = [
   "Jun",
   "Jul",
   "Aug",
-  "Sept",
+  "Sep",
   "Oct",
   "Nov",
   "Dec",
 ];
 s1(".today").innerHTML =
-  "Today " +
-  new Date().getDate() +
-  " " +
-  montharr[new Date().getUTCMonth()];
+  "Today " + new Date().getDate() + " " + montharr[new Date().getUTCMonth()];
 // show and hide error
 function showerror(value) {
   s1(".showerror").style.display = "grid";
