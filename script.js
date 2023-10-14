@@ -47,7 +47,6 @@ function fetchdata(lat, lon) {
     res
       .json()
       .then((res) => {
-        console.log(res);
         s1(".temp").innerHTML = celcius
           ? (res.main.temp - 273.15).toFixed(0) + "°C"
           : (((res.main.temp - 273.15) * 9) / 5 + 32).toFixed(0) + "°F";
